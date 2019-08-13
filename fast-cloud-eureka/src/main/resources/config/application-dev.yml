@@ -1,0 +1,27 @@
+spring:
+  profiles: server1
+eureka:
+  instance:
+  #多注册中心的不能使用localhost或者127.0.0.1,否则Eureka注册中心会认为另外一个注册中心是unavailable的
+    hostname: bjsendi
+  client:
+    serviceUrl:
+      defaultZone: http://${security.user.name}:${security.user.password}@bjsendi01:${server.port}/eureka/,http://${security.user.name}:${security.user.password}@bjsendi02:${server.port}/eureka/
+---
+spring:
+  profiles: server2
+eureka:
+  instance:
+    hostname: bjsendi01
+  client:
+    serviceUrl:
+      defaultZone: http://${security.user.name}:${security.user.password}@bjsendi:${server.port}/eureka/,http://${security.user.name}:${security.user.password}@bjsendi02:${server.port}/eureka/
+---
+spring:
+  profiles: server3
+eureka:
+  instance:
+    hostname: bjsendi02
+  client:
+    serviceUrl:
+      defaultZone: http://${security.user.name}:${security.user.password}@bjsendi:${server.port}/eureka/,http://${security.user.name}:${security.user.password}@bjsendi01:${server.port}/eureka/

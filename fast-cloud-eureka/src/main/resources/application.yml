@@ -1,0 +1,25 @@
+#添加HTTP basic基本验证
+security:
+  basic:
+    enabled: true
+  user:
+    name: sendiservice
+    password: Sendi!123
+#只接受以下ip
+spring:
+  application:
+    name: fast-cloud-eureka-server
+  cloud:
+    inetutils:
+      preferredNetworks:
+        - 192.168
+
+server:
+  port: 15001
+
+eureka:
+  instance:
+    metadata-map:
+      user.name: ${security.user.name}
+      user.password: ${security.user.password}
+

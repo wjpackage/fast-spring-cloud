@@ -1,0 +1,6 @@
+eureka:
+  #是否将自己注册到Eureka-Server中，默认的为true
+  client:
+    registerWithEureka: false
+  #是否从Eureka-Server中获取服务注册信息，默认为true
+    fetchRegistry: false

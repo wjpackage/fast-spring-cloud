@@ -1,0 +1,6 @@
+eureka:
+  instance:
+    hostname: xjld-cloud-02
+  client:
+    serviceUrl:
+      defaultZone: http://${security.user.name}:${security.user.password}@xjld-cloud-01:${server.port}/eureka/

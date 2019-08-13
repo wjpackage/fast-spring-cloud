@@ -1,0 +1,7 @@
+eureka:
+  instance:
+  #多注册中心的不能使用localhost或者127.0.0.1,否则Eureka注册中心会认为另外一个注册中心是unavailable的
+    hostname: xjld-cloud-01
+  client:
+    serviceUrl:
+      defaultZone: http://${security.user.name}:${security.user.password}@xjld-cloud-02:${server.port}/eureka/
