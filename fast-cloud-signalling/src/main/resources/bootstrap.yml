@@ -1,0 +1,43 @@
+
+#添加HTTP basic基本验证
+security:
+  basic:
+    enabled: false
+  user:
+    name: sendiapi
+    password: Sendi!123
+sendi:
+  eurekaServer:
+    name: sendiservice
+    password: Sendi!123
+spring:
+#  application:
+#    name: xjld-cloud-signalling
+
+  profiles:
+#    active: dev
+    active: proc
+
+
+server:
+  port: 18002
+
+#内部对接端口
+signalling:
+  #接口开关
+  socketSwitch: true
+  #服务端最大支持连接数
+  socketMaxConnection: 200
+  charset: utf-8
+  listen-port: 21124
+  #每30秒监测服务端是否异常关闭，并重启
+  checkDelay: 30000
+  #处理器，用于处理对端消息
+  handler:
+    thread:
+      #最大核心线程
+      corePoolSize: 100
+      #最大等待线程
+      maximum: 1000
+      #空闲线程存活时间
+      keepAliveTime: 60000

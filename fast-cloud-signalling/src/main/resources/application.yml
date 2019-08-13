@@ -1,0 +1,31 @@
+
+spring:
+  cloud:
+    #ribbon重试机制
+    loadbalancer:
+      retry:
+        enabled: true
+zuul:
+  #API网关在进行请求路由转发前为请求设置Host头信息
+  add-host-header: true
+  host:
+    #总连接数
+    maxTotalConnections: 2048
+    #每个路由连接数
+    maxPerRouteConnections: 20
+    #eureka 的服务用ribbon 但静态url用这两个配置
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000
+  sensitive-headers:
+
+#邮件告警配置，通过
+email:
+  redis:
+    switch: true
+    queue: fraud_queue_mail_send
+    emailto: gonghongxu@gzsendi.cn,wangjin@gzsendi.cn,zhongs@gzsendi.cn
+    repeattime: 300000
+    password: gzsendi1!
+    ip: 132.129.5.52
+    port: 6379
+    timeout: 5000

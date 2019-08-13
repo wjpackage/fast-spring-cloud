@@ -1,0 +1,27 @@
+eureka:
+  instance: # Submitting the credentials using Eureka:
+      metadata-map:
+        user.name: ${security.user.name}
+        user.password: ${security.user.password}
+  client:
+    serviceUrl:
+      defaultZone: http://${sendi.eurekaServer.name}:${sendi.eurekaServer.password}@bjsendi:15001/eureka/,http://${sendi.eurekaServer.name}:${sendi.eurekaServer.password}@bjsendi01:15001/eureka/,http://${sendi.eurekaServer.name}:${sendi.eurekaServer.password}@bjsendi02:15001/eureka/
+
+
+spring:
+  application:
+    name: xjld-cloud-signalling-test
+    #bus 需提供此属性区分同服务不同实例
+    index: ${random.long}
+  jpa:
+     show-sql: true
+  redis:
+    clusterNodes: 192.168.2.104:7000,192.168.2.104:7001,192.168.2.104:7002,192.168.2.104:7003,192.168.2.104:7004,192.168.2.104:7005
+    commandTimeout: 100000  #redis操作的超时时间
+    password: gzsendi!1
+    maxAttempts: 3
+    pool:
+       maxActive: 100 #最大连接数
+       maxIdle: 150 #最大空闲连接数
+       minIdle: 5 #最小空闲连接数
+       maxWait: 30000 #获取连接最大等待时间 ms  #default -1
