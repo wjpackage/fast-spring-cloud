@@ -1,0 +1,8 @@
+eureka:
+  instance: # Submitting the credentials using Eureka:
+      metadata-map:
+        user.name: ${security.user.name}
+        user.password: ${security.user.password}
+  client:
+    serviceUrl:
+      defaultZone: http://${sendi.eurekaServer.name}:${sendi.eurekaServer.password}@xjld-cloud-01:15001/eureka/,http://${sendi.eurekaServer.name}:${sendi.eurekaServer.password}@xjld-cloud-02:15001/eureka/

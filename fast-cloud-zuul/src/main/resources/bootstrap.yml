@@ -1,0 +1,20 @@
+
+#添加HTTP basic基本验证
+security:
+  basic:
+    enabled: false
+  user:
+    name: sendiapi
+    password: Sendi!123
+sendi:
+  eurekaServer:
+    name: sendiservice
+    password: Sendi!123
+spring:
+  application:
+    name: fast-cloud-zuul
+    #bus 需提供此属性区分同服务不同实例
+    index: ${random.long}
+
+server:
+  port: 15003

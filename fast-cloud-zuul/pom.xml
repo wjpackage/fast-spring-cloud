@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sendi</groupId>
+    <artifactId>fast-cloud-zuul</artifactId>
+    <version>1.0</version>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.19.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Edgware.SR5</spring-cloud.version>
+        <skipTests>true</skipTests>
+        <ybef-cloud-zuul.version>${version}</ybef-cloud-zuul.version>
+        <commons-lang3.version>3.4</commons-lang3.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--打包时把jar文件导出单独放在一个文件夹里-->
+            <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-dependency-plugin</artifactId>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>copy-dependencies</id>-->
+            <!--<phase>prepare-package</phase>-->
+            <!--<goals>-->
+            <!--<goal>copy-dependencies</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+            <!--<outputDirectory>${project.build.directory}/lib</outputDirectory>-->
+            <!--<overWriteReleases>false</overWriteReleases>-->
+            <!--<overWriteSnapshots>false</overWriteSnapshots>-->
+            <!--<overWriteIfNewer>true</overWriteIfNewer>-->
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--</plugin>-->
+
+            <!--指定打包jar是的启动main函数位置、classpath路径信息-->
+            <!--模块中添加  <packaging>jar</packaging> 即可把模块打包成jar-->
+            <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-jar-plugin</artifactId>-->
+            <!--<configuration>-->
+            <!--<archive>-->
+            <!--<manifest>-->
+            <!--<addClasspath>false</addClasspath>-->
+            <!--<classpathPrefix>lib/</classpathPrefix>-->
+            <!--<mainClass>SpringBootDemoApplication</mainClass>-->
+            <!--</manifest>-->
+            <!--</archive>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
+
+            <!--war打包插件-->
+            <!--模块中添加  <packaging>war</packaging> 即可把模块打包成war-->
+            <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-war-plugin</artifactId>-->
+            <!--&lt;!&ndash;<version>2.2</version>&ndash;&gt;-->
+            <!--<configuration>-->
+            <!--<archiveClasses>false</archiveClasses>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
+        </plugins>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zuul</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+    </dependencies>
+
+
+</project>
